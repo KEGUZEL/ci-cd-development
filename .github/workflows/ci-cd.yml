@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env:
-  IMAGE: ${{ secrets.DOCKER_USERNAME }}/myweb-docker
+  IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/myweb-docker
   TAG: latest
 
 jobs:
