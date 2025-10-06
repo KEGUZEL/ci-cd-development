@@ -1,0 +1,42 @@
+.
+├── backend
+│   ├── Dockerfile
+│   ├── package.json
+│   └── server.js
+├── client
+│   ├── eslint.config.js
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   └── vite.svg
+│   ├── README.md
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── assets
+│   │   ├── index.css
+│   │   └── main.jsx
+│   └── vite.config.js
+├── docker-compose.yml
+├── Dockerfile
+├── DockerFile
+├── Dockerfile.old
+├── .dockerignore
+├── .github
+│   └── workflows
+│       ├── ci-cd.yml
+│       └── README.md
+├── index.html
+├── nginx.conf
+├── README.md
+├── readme.txt
+├── repo-structure.txt
+├── script.js
+└── server
+    ├── package.json
+    ├── package-lock.json
+    └── server.js
+
+9 directories, 31 files
