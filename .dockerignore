@@ -1,4 +1,12 @@
-node_modules
-server/node_modules
+# VCS
 .git
 .github
+.gitignore
+
+# Node
+node_modules
+**/node_modules
+
+# Build çıktıları
+dist
+build
