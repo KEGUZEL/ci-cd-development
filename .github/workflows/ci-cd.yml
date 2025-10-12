@@ -14,6 +14,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Show workspace (debug)
+        run: |
+          pwd
+          echo "--- ls -la (root) ---"
+          ls -la
+          echo "--- find level 2 ---"
+          find . -maxdepth 2 -type d -print
+          echo "--- .dockerignore ---"
+          cat .dockerignore || true
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
