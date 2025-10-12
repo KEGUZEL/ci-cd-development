@@ -6,10 +6,16 @@ function App() {
 
   const checkHealth = async () => {
     try {
-      const res = await fetch("/api/health");
+      // .env dosyasındaki API adresini alıyoruz
+      const API_URL = import.meta.env.VITE_API_URL;
+
+      // API’ye isteği gönder
+      const res = await fetch(`${API_URL}/api/health`);
       const data = await res.json();
+
       setHealth(data.ok ? "✅ Sunucu aktif" : "❌ Cevap yok");
     } catch (err) {
+      console.error("API bağlantı hatası:", err);
       setHealth("❌ Hata: Sunucuya ulaşılamıyor");
     }
   };
@@ -19,9 +25,11 @@ function App() {
       <Typography variant="h4" gutterBottom>
         MyWeb Dashboard 🚀
       </Typography>
+
       <Typography variant="body1" gutterBottom>
         {health}
       </Typography>
+
       <Button variant="contained" color="primary" onClick={checkHealth}>
         Sağlık Kontrolü
       </Button>
@@ -30,4 +38,3 @@ function App() {
 }
 
 export default App;
-
