@@ -26,14 +26,14 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: infra/docker/api.Dockerfile
+          file: infra/docker/api.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myweb-docker-api:latest
 
-      - name: Build and push Web image
+      - name: Build and push WEB image
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: infra/docker/web.Dockerfile
+          file: infra/docker/web.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myweb-docker-web:latest
