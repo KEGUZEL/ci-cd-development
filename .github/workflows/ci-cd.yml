@@ -37,3 +37,30 @@ jobs:
           file: infra/docker/web.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myweb-docker-web:latest
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Connect via SSH and deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            if [ ! -d ~/myweb-docker ]; then
+              git clone https://github.com/KEGUZEL/devops-deneme.git ~/myweb-docker
+            else
+              cd ~/myweb-docker && git pull
+            fi
+
+            cd ~/myweb-docker
+            export DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+
+            docker compose -f docker-compose.deploy.yml pull
+            docker compose -f docker-compose.deploy.yml up -d
+            docker ps
