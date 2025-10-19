@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  api:
+    image: keguzel/myweb-docker-api:latest
+    container_name: myweb-api
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  web:
+    image: keguzel/myweb-docker-web:latest
+    container_name: myweb-web
+    ports:
+      - "80:3000"
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
